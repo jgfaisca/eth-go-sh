@@ -1,2 +1,2 @@
-# eth-script
-Ethereum go Scripts
+#shethgo
+Ethereum-go shell scripts

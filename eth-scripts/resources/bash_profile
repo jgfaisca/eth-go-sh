@@ -1,0 +1,8 @@
+export PATH="$HOME/go-ethereum/build/bin:$PATH"
+
+export GOPATH="$HOME/work"
+export GOROOT="/usr/local/go"
+export PATH="$GOROOT/bin:$PATH"
+
+
+

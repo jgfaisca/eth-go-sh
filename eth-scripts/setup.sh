@@ -102,7 +102,7 @@ sudo npm install pm2 -g
 tmpfile=$(mktemp /tmp/ethereum.XXXXXX)
 cp resources/ethereum $tmpfile
 replaceVar "USER_NAME" "$U" "$tmpfile" &&
-sudo cp $tmpfile /etc/init.d/ &&
+sudo cp $tmpfile /etc/init.d/ethereum &&
 rm $tmpfile
 
 # configure go-ethereum service to run at startup

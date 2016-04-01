@@ -52,3 +52,5 @@ eval $HOME/.bash_profile
 
 # output version
 go version
+
+exit 0

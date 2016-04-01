@@ -44,16 +44,15 @@ while [ $# -gt 0 ]; do
     shift
 done
 
-
 # install nodejs
-node --version &> /dev/null
+node --version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
   echo "node is not being recognized as a command; installing ...";
   (exec "./install_nodejs.sh")
 fi
 
 # install golang
-go version &> /dev/null
+go version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
   echo "go is not being recognized as a command; installing ...";
   (exec "./install_golang.sh")

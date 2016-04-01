@@ -5,7 +5,7 @@ BASEN=$(basename $BASH_SOURCE)
 
 # help message
 function show_help(){
-  echo "usage: ./$BASEN <--amd/--nvidia>"
+  echo "usage: ./$BASEN <--amd|--nvidia>"
   exit 1
 }
 

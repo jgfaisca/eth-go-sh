@@ -27,12 +27,14 @@ TAR_FILE="go$VERSION.$OS-$ARCH.tar.gz"
 # URL
 URL="$REPO/$TAR_FILE"
 
-if ! curl --version &> /dev/null ; then
+# install curl
+curl --version >/dev/null 2>&1
+if [ $? -ne 0 ]; then
   echo "curl is not being recognized as a command; installing... ";
   sudo apt-get install -y curl
 fi
 
-# download
+# download go
 curl -O "$URL"
 
 # uncompress to installation path
@@ -40,10 +42,13 @@ CMD="sudo tar -C $INSTALL_PATH -xvzf $TAR_FILE"
 echo $CMD
 eval $CMD && rm -f $TAR_FILE
 
+# create dirs
 mkdir -p $HOME/go
 mkdir -p $HOME/work
 
+# copy profile
 cp resources/bash_profile $HOME/.bash_profile &&
 eval $HOME/.bash_profile
 
+# output version
 go version

@@ -8,7 +8,7 @@
 #
 
 # version
-$VERSION="5"
+VERSION="5"
 
 if ! curl --version &> /dev/null ; then
   echo "curl is not being recognized as a command; installing...";

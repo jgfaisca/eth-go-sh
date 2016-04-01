@@ -46,17 +46,17 @@ done
 
 
 # install nodejs
-if ! node --version &> /dev/null ; then
+node --version &> /dev/null
+if [ $? -ne 0 ]; then
   echo "node is not being recognized as a command; installing ...";
   (exec "./install_nodejs.sh")
-  exit 0
 fi
 
 # install golang
-if ! go version &> /dev/null ; then
+go version &> /dev/null
+if [ $? -ne 0 ]; then
   echo "go is not being recognized as a command; installing ...";
-  (exec "./install_golang.sh") 
-  exit 0
+  (exec "./install_golang.sh")
 fi
 
 # update packages

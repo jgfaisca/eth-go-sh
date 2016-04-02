@@ -140,12 +140,8 @@ sudo update-rc.d ethereum defaults
 # username
 U=$(whoami)
 
-# hostname
-H="eth"
-H0=$(ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub)
-H1=$(echo $H0 $(uname -snmpio) | md5sum)
-H2="${H1:0:13}"
-H3="$H$H2"
+# instance name
+H3=(./instance_name.sh)
 
 # update net intelligence api configuration
 cp resources/app.json $HOME/eth-net-intelligence-api/ && 

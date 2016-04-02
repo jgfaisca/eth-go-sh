@@ -41,13 +41,13 @@ function installAMD(){
   sudo apt-get purge -y $OPENCL
   #URL=""
   if [ ! -d "/opt/AMDAPPSDK-$AMD_APP_SDK_VERSION" ]; then
-  	# Control will enter here if /opt/AMDAPP doesn't exist. 
+  	# Control will enter here if /opt/AMDAPPSDK-* doesn't exist. 
   	sudo ./$AMD_APP_SDK_SH
   	ln -s /opt/AMDAPPSDK-$AMD_APP_SDK_VERSION /opt/AMDAPP
   	ln -s /opt/AMDAPP/include/CL /usr/include
   	ln -s /opt/AMDAPP/lib/x86_64/* /usr/lib/
   	ldconfig
-  	shutdown -r -v +1 "System will restart in 1 minute."
+  	shutdown -r -v +1
   fi
   sudo apt-get install fglrx-updates
   sudo aticonfig --adapter=all --initial

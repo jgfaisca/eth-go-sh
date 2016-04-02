@@ -40,7 +40,7 @@ function installAMD(){
   # remove opensource opencl-dev
   sudo apt-get purge -y $OPENCL
   #URL=""
-  if [ ! -d "/opt/AMDAPP" ]; then
+  if [ ! -d "/opt/AMDAPPSDK-$AMD_APP_SDK_VERSION" ]; then
   	# Control will enter here if /opt/AMDAPP doesn't exist. 
   	sudo ./$AMD_APP_SDK_SH
   	ln -s /opt/AMDAPPSDK-$AMD_APP_SDK_VERSION /opt/AMDAPP

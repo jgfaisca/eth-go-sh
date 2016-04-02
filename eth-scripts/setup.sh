@@ -141,7 +141,7 @@ sudo update-rc.d ethereum defaults
 U=$(whoami)
 
 # instance name
-H3=(./instance_name.sh)
+H3=$(./instance_name.sh)
 
 # update net intelligence api configuration
 cp resources/app.json $HOME/eth-net-intelligence-api/ && 

@@ -6,6 +6,11 @@
 # 0-6 (0=silent, 1=error, 2=warn, 3=info, 4=core, 5=debug, 6=debug detail)
 #
 
+export GPU_MAX_ALLOC_PERCENT=100
+export GPU_SINGLE_ALLOC_PERCENT=100
+export GPU_USE_SYNC_OBJECTS=1
+export GPU_MAX_HEAP_SIZE=100
+
 LOGPATH=./
 mkdir -p $LOGPATH/log
 

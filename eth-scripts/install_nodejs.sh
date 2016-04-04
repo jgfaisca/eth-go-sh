@@ -1,5 +1,4 @@
 #!/bin/bash
-
 #
 # Description: 	Install nodejs (>= 4) via package manager
 #
@@ -25,6 +24,7 @@ sudo apt-get install -y nodejs
 sudo apt-get install -y build-essential
 
 # output version
-node --version
+echo "node version = $(node --version)"
+echo "npm version = $(npm --version)"
 
 exit 0

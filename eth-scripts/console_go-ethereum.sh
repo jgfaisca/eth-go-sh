@@ -3,6 +3,6 @@
 # Attach to go-ethereum console
 #
 
-$ETHGOPATH/build/bin/geth attach
+$ETHGOPATH/go-ethereum/build/bin/geth attach
 
 

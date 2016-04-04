@@ -1,9 +1,10 @@
 #!/bin/bash
+#
+# Print go-ethereum version
+#
 
-ETHEREUM_DIR=$HOME
+$ETHGOPATH/go-ethereum/build/bin/geth version
 
-# print Go Client version
-$ETHEREUM_DIR/go-ethereum/build/bin/geth version
-
+exit 0
 
 

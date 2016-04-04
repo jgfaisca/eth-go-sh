@@ -1,4 +1,5 @@
-export ETHPATH="$HOME/go-ethereum"
+export ETHGOPATH="$HOME/go-ethereum"
+export ETHNETPATH="$HOME/eth-net-intelligence-api"
 export PATH="$ETHPATH/build/bin:$PATH"
 export GOPATH="$HOME/work"
 export GOROOT="/usr/local/go"

@@ -1,24 +1,24 @@
 #!/bin/bash
-
+#
 # Reset Host 
+#
+#
 
-ETHEREUM_DIR=$HOME
-
-read -p "Remove $ETHEREUM_DIR/go-ethereum? (y/n) " RESP
+read -p "Remove $ETHGOPATH/go-ethereum? (y/n) " RESP
 if [ "$RESP" = "y" ]; then
   rm -rfv $ETHEREUM_DIR/go-ethereum
 else
   echo "No"
 fi
 
-read -p "Remove $ETHEREUM_DIR/eth-net-intelligence-api? (y/n) " RESP
+read -p "Remove $ETHNETPATH/eth-net-intelligence-api? (y/n) " RESP
 if [ "$RESP" = "y" ]; then
   rm -rfv $ETHEREUM_DIR/eth-net-intelligence-api
 else
   echo "No"
 fi
 
-read -p "Remove $ETHEREUM_DIR/.ethereum? (y/n) " RESP
+read -p "Remove $ETHDATADIR/.ethereum? (y/n) " RESP
 if [ "$RESP" = "y" ]; then
   rm -rIv $ETHEREUM_DIR/.ethereum
 else
@@ -32,4 +32,5 @@ else
   echo "No"
 fi
 
+exit 0
 

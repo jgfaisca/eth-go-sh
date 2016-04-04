@@ -9,8 +9,8 @@
 LOGPATH=./
 mkdir -p $LOGPATH/log
 
-LOG=$LOGPATH/ethereum.log
-ERR=$LOGPATH/ethereum.err
+LOG=$LOGPATH/geth.log
+ERR=$LOGPATH/geth.err
 
 # start  Netstat
 cd $ETHNETPATH/eth-net-intelligence-api

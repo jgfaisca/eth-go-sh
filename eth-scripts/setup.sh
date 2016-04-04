@@ -7,17 +7,18 @@
 # http://developer.amd.com/tools-and-sdks/graphics-development/display-library-adl-sdk/
 #
 
-# Variables
-AMD_APP_SDK_SH="AMD-APP-SDK-v3.0.130.136-GA-linux64.sh"
+# variables
+AMD_APP_SDK_SH="AMD-APP-SDK-v3.0.130.136-GA-linux64.sh" # URN
 AMD_APP_SDK_VERSION="3.0"
+URL="" # URL to AMD_APP_SDK_SH for download 
 
 # script name
 BASEN=$(basename $BASH_SOURCE)
 
 # help message
 function show_help(){
-  echo "usage: ./$BASEN <--amd|--nvidia>"
-  exit 1
+  	echo "usage: ./$BASEN <--amd|--nvidia>"
+  	exit 1
 }
 
 # run command
@@ -29,19 +30,17 @@ function evalCMD(){
 
 # replace file values
 function replaceVar(){
-  VAR1="$1"
-  VAR2="$2"
-  FILE="$3"
-  evalCMD "perl -pi -e 's/$VAR1/$VAR2/g' $FILE"
+ 	VAR1="$1"
+  	VAR2="$2"
+  	FILE="$3"
+  	evalCMD "perl -pi -e 's/$VAR1/$VAR2/g' $FILE"
 }
 
 # install AMD-APP-SDK
 function installAMD(){
-  # remove opensource opencl-dev
-  sudo apt-get purge -y $OPENCL
-  #URL=""
-  if [ ! -d "/opt/AMDAPPSDK-$AMD_APP_SDK_VERSION" ]; then
-  	# Control will enter here if /opt/AMDAPPSDK-* doesn't exist. 
+  	# remove opensource opencl-dev
+  	[ -f ./URL.txt ] && URL=$(cat ./URL.txt)
+  	[ -f ./$AMD_APP_SDK_SH ] || curl -O -k "$URL/$AMD_APP_SDK_SH"
 	sudo ./$AMD_APP_SDK_SH
   	ln -s /opt/AMDAPPSDK-$AMD_APP_SDK_VERSION /opt/AMDAPP
   	ln -s /opt/AMDAPP/include/CL /usr/include
@@ -77,18 +76,21 @@ while [ $# -gt 0 ]; do
     shift
 done
 
+# reset
+(exec "./reset.sh")
+
 # install nodejs
 node --version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
-  echo "node is not being recognized as a command; installing ...";
-  (exec "./install_nodejs.sh")
+  	echo "node is not being recognized as a command; installing ...";
+  	(exec "./install_nodejs.sh")
 fi
 
 # install golang
 go version >/dev/null 2>&1
 if [ $? -ne 0 ]; then
-  echo "go is not being recognized as a command; installing ...";
-  (exec "./install_golang.sh")
+  	echo "go is not being recognized as a command; installing ...";
+  	(exec "./install_golang.sh")
 fi
 
 # update packages

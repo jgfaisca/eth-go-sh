@@ -10,26 +10,26 @@
 # 
 ### END INIT INFO
 
-ETHEREUM_DIR=/home/USER_NAME/eth-scripts
+ETHGOSHPATH=/home/USER_NAME/eth-scripts
 
 case "$1" in
  start)
-   su USER_NAME -c $ETHEREUM_DIR/start_go-ethereum.sh
+   su USER_NAME -c $ETHGOSHPATH/start_go-ethereum.sh
    ;;
  stop)
-   su root -c $ETHEREUM_DIR/stop_go-ethereum.sh
+   su root -c $ETHGOSHPATH/stop_go-ethereum.sh
    sleep 5
    ;;
  status)
-   su USER_NAME -c $ETHEREUM_DIR/status_go-ethereum.sh
+   su USER_NAME -c $ETHGOSHPATH/status_go-ethereum.sh
    ;;
  version)
-   su USER_NAME -c $ETHEREUM_DIR/versio_go-ethereum.sh
+   su USER_NAME -c $ETHGOSHPATH/versio_go-ethereum.sh
    ;;
  restart)
-   su root -c $ETHEREUM_DIR/stop_go-ethereum.sh
+   su root -c $ETHGOSHPATH/stop_go-ethereum.sh
    sleep 5
-   su USER_NAME -c $ETHEREUM_DIR/start_go-ethereum.sh
+   su USER_NAME -c $ETHGOSHPATH/start_go-ethereum.sh
    ;;
  *)
    echo "Usage: ethereum {start|stop|status|version|restart}" >&2

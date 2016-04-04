@@ -2,11 +2,11 @@
 
 # install go-ethereum
 
-if [[ -d "$HOME/go-ethereum" ]]; then
-    echo "remove $HOME/go-ethereum before install"
+if [[ -d "$ETHGOPATH/go-ethereum" ]]; then
+    echo "remove $ETHGOPATH/go-ethereum before install"
     exit 1 
 else
-	cd $HOME
+	cd $ETHGOPATH
 	git clone https://github.com/ethereum/go-ethereum.git
 	cd go-ethereum
 	export GO_OPENCL=true

@@ -50,22 +50,23 @@ function resetNode(){
 function installNvidia(){
   	# remove opensource opencl-dev
   	# OPENCL="nvidia-opencl-dev"
-  	# sudo apt-get -y -purge $OPENCL
+  	# sudo apt-get -y purge $OPENCL
 }
 
 # install AMD
 function installAMD(){
   	# remove opensource opencl-dev
   	OPENCL="ocl-icd-opencl-dev xserver-xorg-video-ati"
-  	sudo apt-get -y -purge $OPENCL
-  	[ -f ./URL.txt ] && URL=$(cat ./URL.txt)
-  	[ -f ./$AMD_APP_SDK_SH ] || curl -O -k "$URL/$AMD_APP_SDK_SH"
-	sudo ./$AMD_APP_SDK_SH
-  	ln -s /opt/AMDAPPSDK-$AMD_APP_SDK_VERSION /opt/AMDAPP
-  	ln -s /opt/AMDAPP/include/CL /usr/include
-  	ln -s /opt/AMDAPP/lib/x86_64/* /usr/lib/
-  	ldconfig
-  	shutdown -r -v +1
+  	sudo apt-get -y purge $OPENCL
+  if 	[ ! -d "/opt/AMDAPPSDK-$AMD_APP_SDK_VERSION" ]; then
+  		[ -f ./URL.txt ] && URL=$(cat ./URL.txt)
+  		[ -f ./$AMD_APP_SDK_SH ] || curl -O -k "$URL/$AMD_APP_SDK_SH"
+		sudo ./$AMD_APP_SDK_SH
+  		ln -s /opt/AMDAPPSDK-$AMD_APP_SDK_VERSION /opt/AMDAPP
+  		ln -s /opt/AMDAPP/include/CL /usr/include
+  		ln -s /opt/AMDAPP/lib/x86_64/* /usr/lib/
+  		ldconfig
+  		shutdown -r -v +1
   fi
   	sudo apt-get install fglrx-updates
   	sudo aticonfig --adapter=all --initial

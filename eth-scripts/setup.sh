@@ -11,6 +11,7 @@
 AMD_APP_SDK_SH="AMD-APP-SDK-v3.0.130.136-GA-linux64.sh" # URN
 AMD_APP_SDK_VERSION="3.0"
 URL="" # URL to AMD-APP-SDK installation script 
+SECRET="" # WS SECRET
 
 # script name
 BASEN=$(basename $BASH_SOURCE)
@@ -165,8 +166,10 @@ H3=$(./instance_name.sh)
 
 # update net intelligence api configuration
 cp resources/app.json $HOME/eth-net-intelligence-api/ && 
-replaceVar "I_NAME" "$H3" "$HOME/eth-net-intelligence-api/app.json" &&
-replaceVar "C_DETAILS" "${U}\@${H3}" "$HOME/eth-net-intelligence-api/app.json" && 
+replaceVar "I_NAME" "$H3" "$ETHNETPATH/eth-net-intelligence-api/app.json" &&
+replaceVar "C_DETAILS" "${U}\@${H3}" "$ETHNETPATH/eth-net-intelligence-api/app.json" &&
+[ -f ./WS_SECRET.txt ] && SECRET=$(cat ./WS_SECRET.txt)
+replaceVar "MY_SECRET" "$SECRET" "$HOME/eth-net-intelligence-api/app.json" &&
 
 # create new account
 read -p "Create new Ethereum account? (y/n) " RESP

@@ -10,7 +10,7 @@
 # variables
 AMD_APP_SDK_SH="AMD-APP-SDK-v3.0.130.136-GA-linux64.sh" # URN
 AMD_APP_SDK_VERSION="3.0"
-URL="" # URL to AMD_APP_SDK_SH for download 
+URL="" # URL to AMD-APP-SDK installation script 
 
 # script name
 BASEN=$(basename $BASH_SOURCE)
@@ -36,9 +36,28 @@ function replaceVar(){
   	evalCMD "perl -pi -e 's/$VAR1/$VAR2/g' $FILE"
 }
 
-# install AMD-APP-SDK
+# reset node
+function resetNode(){
+	read -p "Reset node? (y/n) " RESP
+	if [ "$RESP" = "y" ]; then
+  		(exec "./reset.sh")
+	else
+  		echo "No"
+	fi
+}
+
+# install Nvidia
+function installNvidia(){
+  	# remove opensource opencl-dev
+  	# OPENCL="nvidia-opencl-dev"
+  	# sudo apt-get -y -purge $OPENCL
+}
+
+# install AMD
 function installAMD(){
   	# remove opensource opencl-dev
+  	OPENCL="ocl-icd-opencl-dev xserver-xorg-video-ati"
+  	sudo apt-get -y -purge $OPENCL
   	[ -f ./URL.txt ] && URL=$(cat ./URL.txt)
   	[ -f ./$AMD_APP_SDK_SH ] || curl -O -k "$URL/$AMD_APP_SDK_SH"
 	sudo ./$AMD_APP_SDK_SH
@@ -60,14 +79,15 @@ fi
 while [ $# -gt 0 ]; do
     case "$1" in
         --amd)
-            OPENCL="ocl-icd-opencl-dev xserver-xorg-video-ati"
+            resetNode		
             installAMD
             shift
             ;;
         --nvidia)
-            OPENCL="nvidia-opencl-dev"
             echo "not implemented"
-            exit 1
+            exit 1	
+            #resetNode
+	    #installNvidia	
             ;;
         *)
             show_help
@@ -75,9 +95,6 @@ while [ $# -gt 0 ]; do
     esac
     shift
 done
-
-# reset
-(exec "./reset.sh")
 
 # install nodejs
 node --version >/dev/null 2>&1
@@ -149,5 +166,13 @@ H3=$(./instance_name.sh)
 cp resources/app.json $HOME/eth-net-intelligence-api/ && 
 replaceVar "I_NAME" "$H3" "$HOME/eth-net-intelligence-api/app.json" &&
 replaceVar "C_DETAILS" "${U}\@${H3}" "$HOME/eth-net-intelligence-api/app.json" && 
+
+# create new account
+read -p "Create new Ethereum account? (y/n) " RESP
+if [ "$RESP" = "y" ]; then
+  $ETHGOPATH/go-ethereum/build/bin/geth account new 
+else
+  echo "No"
+fi
 
 exit 0

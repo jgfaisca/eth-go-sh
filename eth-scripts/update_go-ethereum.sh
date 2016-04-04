@@ -1,16 +1,15 @@
 #!/bin/bash
 #
-# update go-ethereum
+# Update go-ethereum
 #
 
-cd $HOME/go-ethereum
+cd $ETHGOPATH/go-ethereum
 git pull
 export GO_OPENCL=true
 export GPU_MAX_ALLOC_PERCENT=100
 export GPU_SINGLE_ALLOC_PERCENT=100
 make geth
-$HOME/eth-scripts/stop_go-ethereum.sh
-$HOME/eth-scripts/start_go-ethereum.sh
+sudo service ethereum restart
 
 exit 0
 

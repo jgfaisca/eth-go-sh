@@ -1,5 +1,6 @@
 export ETHGOPATH="$HOME"
 export ETHNETPATH="$HOME"
+export ETHDATADIR="$HOME"
 export PATH="$ETHGOPATH/go-ethereum/build/bin:$PATH"
 export GOPATH="$HOME/work"
 export GOROOT="/usr/local/go"

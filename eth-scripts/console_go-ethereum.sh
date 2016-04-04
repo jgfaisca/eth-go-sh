@@ -1,7 +1,8 @@
 #!/bin/bash
+#
+# Attach to go-ethereum console
+#
 
-ETHEREUM_DIR=$HOME
-
-$ETHEREUM_DIR/go-ethereum/build/bin/geth attach
+$ETHPATH/build/bin/geth attach
 
 

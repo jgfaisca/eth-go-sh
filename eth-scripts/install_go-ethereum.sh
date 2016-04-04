@@ -3,8 +3,8 @@
 # install go-ethereum
 
 if [[ -d "$ETHGOPATH/go-ethereum" ]]; then
-    echo "remove $ETHGOPATH/go-ethereum before install"
-    exit 1 
+	echo "remove $ETHGOPATH/go-ethereum before install"
+    	exit 1 
 else
 	cd $ETHGOPATH
 	git clone https://github.com/ethereum/go-ethereum.git

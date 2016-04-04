@@ -1,16 +1,20 @@
 #!/bin/bash
+#
+# Start go-ethereum with Netstat
+#
 
-ETHEREUM_DIR=$HOME
+LOG=$ETHNETPATH/ethereum.log
+ERR=$ETHNETPATH/ethereum.err
 
 # start  Netstat
-cd $ETHEREUM_DIR/eth-net-intelligence-api
-pm2 start  $ETHEREUM_DIR/eth-net-intelligence-api/app.json
+cd $ETHNETPATH/eth-net-intelligence-api
+pm2 start  $ETHNETPATH/eth-net-intelligence-api/app.json
 echo "PM2 started"
 
 # start go-ethereum
-nohup $ETHEREUM_DIR/go-ethereum/build/bin/geth --rpc --maxpeers "25" --verbosity "0" \
->$ETHEREUM_DIR/ethereum.log 2>$ETHEREUM_DIR/ethereum.err &
+nohup $ETHGOPATH/go-ethereum/build/bin/geth --datadir=$ETHDATADIR --rpc --maxpeers "25" \
+--verbosity "0" >$LOG 2>$ERR &
 
 echo "Ethereum started"
 
-
+exit 0

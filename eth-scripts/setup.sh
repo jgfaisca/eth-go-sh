@@ -156,6 +156,7 @@ tmpfile=$(mktemp /tmp/ethereum.XXXXXX)
 cp resources/ethereum $tmpfile
 replaceVar "USER_NAME" "$U" "$tmpfile" &&
 sudo cp $tmpfile /etc/init.d/ethereum &&
+sudo chmod 0755 /etc/init.d/ethereum &&
 rm $tmpfile
 
 # configure go-ethereum service to run at startup

@@ -148,6 +148,9 @@ sudo npm install pm2 -g
 # install go-ethereum
 (exec "./install_go-ethereum.sh")
 
+# username
+U=$(whoami)
+
 # install go-ethereum service
 tmpfile=$(mktemp /tmp/ethereum.XXXXXX)
 cp resources/ethereum $tmpfile
@@ -157,9 +160,6 @@ rm $tmpfile
 
 # configure go-ethereum service to run at startup
 sudo update-rc.d ethereum defaults
-
-# username
-U=$(whoami)
 
 # instance name
 H3=$(./instance_name.sh)

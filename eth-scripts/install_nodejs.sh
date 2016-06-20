@@ -7,7 +7,7 @@
 #
 
 # nodejs version
-VERSION="5"
+VERSION="6"
 
 # install curl
 curl --version >/dev/null 2>&1

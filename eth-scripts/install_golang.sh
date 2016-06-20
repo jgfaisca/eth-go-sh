@@ -21,7 +21,7 @@ REPO="https://storage.googleapis.com/golang"
 # installation path
 INSTALL_PATH="/usr/local/"
 # go version
-VERSION="1.6"
+VERSION="1.6.2"
 # tar file
 TAR_FILE="go$VERSION.$OS-$ARCH.tar.gz"
 # URL
@@ -48,7 +48,9 @@ mkdir -p $HOME/work
 
 # copy profile
 cp resources/bash_profile $HOME/.bash_profile &&
+echo 'eval "$($HOME/.bash_profile)"' >> $/HOME/.bashrc &&
 eval $HOME/.bash_profile
+source $HOME/.bashrc
 
 # output version
 go version

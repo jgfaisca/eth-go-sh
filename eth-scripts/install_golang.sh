@@ -48,9 +48,8 @@ mkdir -p $HOME/work
 
 # copy profile
 cp resources/bash_profile $HOME/.bash_profile &&
-echo 'eval "$($HOME/.bash_profile)"' >> $HOME/.bashrc &&
-eval $HOME/.bash_profile
-source $HOME/.bashrc
+echo "$HOME/.bash_profile" >> $HOME/.profile &&
+source $HOME/.bashrc_profile
 
 # output version
 go version

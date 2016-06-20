@@ -48,8 +48,8 @@ mkdir -p $HOME/work
 
 # copy profile
 cp resources/bash_profile $HOME/.bash_profile &&
-echo "$HOME/.bash_profile" >> $HOME/.profile &&
-source $HOME/.bashrc_profile
+echo "source \$HOME/.bash_profile" >> $HOME/.profile &&
+source $HOME/.bash_profile
 
 # output version
 go version

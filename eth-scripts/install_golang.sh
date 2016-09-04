@@ -21,7 +21,7 @@ REPO="https://storage.googleapis.com/golang"
 # installation path
 INSTALL_PATH="/usr/local/"
 # go version
-VERSION="1.6.3"
+VERSION="1.7"
 # tar file
 TAR_FILE="go$VERSION.$OS-$ARCH.tar.gz"
 # URL
@@ -36,6 +36,9 @@ fi
 
 # download go
 curl -O "$URL"
+
+# remove previous extracted files
+[ -d "$INSTALL_PATH/go" ] && sudo rm -rf $INSTALL_PATH/go
 
 # uncompress to installation path
 CMD="sudo tar -C $INSTALL_PATH -xvzf $TAR_FILE"

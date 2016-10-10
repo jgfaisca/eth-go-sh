@@ -11,21 +11,24 @@ export GPU_SINGLE_ALLOC_PERCENT=100
 export GPU_USE_SYNC_OBJECTS=1
 export GPU_MAX_HEAP_SIZE=100
 
-LOGPATH=./
-mkdir -p $LOGPATH/log
+LOGPATH=/tmp
+mkdir -p $LOGPATH
 
 LOG=$LOGPATH/geth.log
-ERR=$LOGPATH/geth.err
-
-# start  Netstat
-cd $ETHNETPATH/eth-net-intelligence-api
-pm2 start $ETHNETPATH/eth-net-intelligence-api/app.json
-echo "PM2 started"
 
 # start go-ethereum
-nohup $ETHGOPATH/go-ethereum/build/bin/geth --datadir "$ETHDATADIR" --rpc --maxpeers "25" \
---verbosity "2" >$LOG 2>$ERR &
+if [ ! $(pgrep geth) ]; then
+  echo "start ..."
+  nohup $ETHGOPATH/go-ethereum/build/bin/geth --datadir "$ETHDATADIR/.ethereum" --rpc --maxpeers "25" \
+  --verbosity "5" --support-dao-fork > $LOG 2>&1 &
+fi
 
-echo "Ethereum started"
+sleep 5
+
+# print pid
+pid=$(pgrep geth)
+if [ $? -eq 0 ]; then
+  echo "ethereum start/running, $pid"
+fi
 
 exit 0

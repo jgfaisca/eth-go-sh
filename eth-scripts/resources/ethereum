@@ -10,15 +10,15 @@
 # 
 ### END INIT INFO
 
-ETHGOSHPATH=/home/USER_NAME/eth-scripts
+ETHGOSHPATH=/home/USER_NAME/eth-go-sh//eth-scripts
 
 case "$1" in
  start)
    su USER_NAME -c $ETHGOSHPATH/start_go-ethereum.sh
    ;;
  stop)
-   su root -c $ETHGOSHPATH/stop_go-ethereum.sh
-   sleep 5
+   su USER_NAME -c $ETHGOSHPATH/stop_go-ethereum.sh
+   sleep 2
    ;;
  status)
    su USER_NAME -c $ETHGOSHPATH/status_go-ethereum.sh
@@ -27,8 +27,8 @@ case "$1" in
    su USER_NAME -c $ETHGOSHPATH/versio_go-ethereum.sh
    ;;
  restart)
-   su root -c $ETHGOSHPATH/stop_go-ethereum.sh
-   sleep 5
+   su USER_NAME -c $ETHGOSHPATH/stop_go-ethereum.sh
+   sleep 2
    su USER_NAME -c $ETHGOSHPATH/start_go-ethereum.sh
    ;;
  *)

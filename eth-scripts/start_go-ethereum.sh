@@ -6,6 +6,9 @@
 # 0-6 (0=silent, 1=error, 2=warn, 3=info, 4=core, 5=debug, 6=debug detail)
 #
 
+ETHGOPATH="$HOME"
+ETHDATADIR="$HOME"
+
 export GPU_MAX_ALLOC_PERCENT=100
 export GPU_SINGLE_ALLOC_PERCENT=100
 export GPU_USE_SYNC_OBJECTS=1
@@ -18,9 +21,8 @@ LOG=$LOGPATH/geth.log
 
 # start go-ethereum
 if [ ! $(pgrep geth) ]; then
-  echo "start ..."
-  nohup $ETHGOPATH/go-ethereum/build/bin/geth --datadir "$ETHDATADIR/.ethereum" --rpc --maxpeers "25" \
-  --verbosity "5" --support-dao-fork > $LOG 2>&1 &
+  nohup $ETHGOPATH/go-ethereum/build/bin/geth --datadir "$ETHDATADIR/.ethereum" --rpc --maxpeers "15" \
+  --verbosity "3" --support-dao-fork > $LOG 2>&1 &
 fi
 
 sleep 5

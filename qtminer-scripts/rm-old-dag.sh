@@ -8,7 +8,7 @@ DIR=$(dirname "${FILE}")
 echo $DIR
 FILE=$(basename $FILE)
 echo $FILE
-#cd $DIR
-#ls | grep -v $FILE | xargs rm
-#cd ..
+cd $DIR
+ls | grep -v $FILE | xargs rm
+cd ..
 

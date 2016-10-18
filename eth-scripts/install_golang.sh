@@ -21,7 +21,7 @@ REPO="https://storage.googleapis.com/golang"
 # installation path
 INSTALL_PATH="/usr/local/"
 # go version
-VERSION="1.7"
+VERSION="1.7.1"
 # tar file
 TAR_FILE="go$VERSION.$OS-$ARCH.tar.gz"
 # URL

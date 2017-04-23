@@ -22,7 +22,7 @@ LOG=$LOGPATH/geth.log
 # start go-ethereum
 if [ ! $(pgrep geth) ]; then
   nohup $ETHGOPATH/go-ethereum/build/bin/geth --datadir "$ETHDATADIR/.ethereum" --rpc --maxpeers "15" \
-  --verbosity "3" --support-dao-fork > $LOG 2>&1 &
+  --verbosity "2"  > $LOG 2>&1 &
 fi
 
 sleep 5

@@ -11,8 +11,8 @@ function reset_vars(){
 
 reset_vars
 
-#nohup $QTMINER_DIR/mine.sh > $LOGFILE 2>&1 &
-nohup $QTMINER_DIR/mine.sh > /dev/null 2>&1 & # doesn't create log
+nohup $QTMINER_DIR/mine.sh > $LOGFILE 2>&1 &
+#nohup $QTMINER_DIR/mine.sh > /dev/null 2>&1 & # doesn't create log
 
 pgrep qtminer >/dev/null 2>&1
 

@@ -21,11 +21,18 @@ REPO="https://storage.googleapis.com/golang"
 # installation path
 INSTALL_PATH="/usr/local/"
 # go version
-VERSION="1.8"
+VERSION="1.8.1"
+
+if [ $# -eq 1 ]; then
+   VERSION=$1
+fi
+
 # tar file
 TAR_FILE="go$VERSION.$OS-$ARCH.tar.gz"
 # URL
 URL="$REPO/$TAR_FILE"
+
+echo "Installing golang version $VERSION ..."
 
 # install curl
 curl --version >/dev/null 2>&1

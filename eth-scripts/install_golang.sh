@@ -21,7 +21,7 @@ REPO="https://storage.googleapis.com/golang"
 # installation path
 INSTALL_PATH="/usr/local/"
 # go version
-VERSION="1.10"
+VERSION="1.10.2"
 
 if [ $# -eq 1 ]; then
    VERSION=$1
